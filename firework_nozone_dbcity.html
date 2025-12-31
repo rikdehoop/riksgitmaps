@@ -33,7 +33,14 @@
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; OpenStreetMap contributors'
   }).addTo(map);
-
+  
+  const fireworkFreeIcon = L.icon({
+    iconUrl: 'https://meldingen.s-hertogenbosch.nl/assets/images/feature-selected-marker.svg',
+    iconSize: [32, 32],        // grootte van het icoon
+    iconAnchor: [16, 32],      // punt van het icoon (onderkant midden)
+    popupAnchor: [0, -32]      // popup boven het icoon
+  });
+  
   const locations = [
     { name: "Dierentehuis 's-Hertogenbosch", coords: [51.691669, 5.347227] },
     { name: "Stichting Goedland", coords: [51.7029, 5.2583] },
@@ -58,7 +65,7 @@
   ];
 
   locations.forEach(loc => {
-    L.marker(loc.coords)
+    L.marker(loc.coords, { icon: fireworkFreeIcon })
       .addTo(map)
       .bindPopup(`<strong>${loc.name}</strong>`);
   });
@@ -66,3 +73,4 @@
 
 </body>
 </html>
+
